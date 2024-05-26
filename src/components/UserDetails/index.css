@@ -1,0 +1,54 @@
+.card{
+    background-color:aliceblue;
+    box-shadow: 2px 0px 20px 0px rgb(212, 234, 242);
+    padding:20px;
+    overflow-x:auto;
+}
+.space-between{
+    display:flex;
+    justify-content: space-between;
+}
+@media(min-width:580px){
+    .space-between{
+        flex-direction:column;
+    }
+}
+.card.div{
+    margin:15px;
+}
+h3{
+    color:blue;
+}
+.profile{
+    width:10%;
+    height:10%;
+}
+.card:hover{
+    transform: scale(1.02);
+}
+li{
+    list-style-type: none;
+}
+form{
+    background-color:white;
+    padding:5px;
+    border-radius:10px;
+    overflow : auto;
+}
+label{
+    font-weight: bold;
+    margin:3px;
+}
+.functions{
+    background-color:transparent;
+    cursor:pointer;
+    border-width:0px;
+}
+.functionss{
+    display:flex;
+    align-items: center;
+}
+.image-profile{
+    width:35%;
+    height:35%;
+}

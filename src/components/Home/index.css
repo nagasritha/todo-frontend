@@ -1,0 +1,132 @@
+.background{
+    background-color: #FB8C00;
+    min-height:100vh;
+}
+.pagination-buttons{
+    background-color:blue;
+    color:white;
+    border-radius:4px;
+    padding:10px;
+    font-size:20px;
+}
+.right-button{
+    text-align: right;
+}
+.flex-align-center{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.flex-justify-content-center{
+    display:flex;
+    justify-content: center;
+    flex-direction:column;
+}
+@media(min-width:580px){
+    .flex-justify-content-center{
+        display:flex;
+    justify-content: center;
+    flex-direction:row;
+    align-items:center;
+    }
+}
+.logo{
+    width:7%;
+    height:100%;
+}
+.align-center{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    min-height: 50vh;
+   }
+  .empty{
+    width:200px;
+    height:400px;
+margin-top:20px;
+  } 
+  @media(min-width:580px){
+.empty{
+    width:300px;
+    height:400px;
+}
+  }
+  .add-user-form{
+    background-color:white;
+    padding:5px;
+    border-radius:10px;
+    max-height:500px;
+    overflow-y:auto;
+    width:100%;
+    box-shadow:2px 2px 20px 3px rgb(24, 24, 24);
+    z-index:2000;
+  }
+  input{
+    padding:5px;
+    font-size:20px;
+    margin-bottom:-20px;
+  }
+  .navbar{
+    background-color:#E65100;
+    position:fixed;
+    z-index:1000;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:Center;
+    width:100vw;
+    height:10vh;
+  }
+  ul{
+    margin-left:-30px;
+  }
+  
+  .column{
+    display:flex;
+    flex-direction:column;
+  }
+  .body-section{
+    padding-top:10vh;
+  }
+  .filterBoard{
+    height:100vh;  
+    border-radius:0px !important;
+    overflow-y:auto;
+  }
+  @media(min-width:800px){
+    .filterBoard{
+      position:sticky; 
+    left:-2;
+    top:10vh;
+    }
+  }
+  .filter-boarder-form{
+    border-radius: 0px !important;
+    height:100%;
+    overflow-y: auto;
+  }
+ 
+  .link{
+  
+    font-size:20px;
+    font-weight: bold;
+    color:white;
+    margin-right:10px;
+    text-decoration: none;
+  }
+  .group{
+    margin-right:20px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
+  .search-input{
+    border-width:0px;
+    outline:none;
+    background-color:transparent;
+  }
+  .search{
+    display:flex;
+    justify-content:space-between;
+  }
