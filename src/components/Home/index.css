@@ -30,6 +30,10 @@
     align-items:center;
     }
 }
+.filterForm{
+  height:100vh;
+  overflow-y: auto;
+}
 .logo{
     width:7%;
     height:100%;

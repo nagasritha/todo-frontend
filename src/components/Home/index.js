@@ -375,7 +375,7 @@ updateAvailable=async (event)=>{
             </nav>
            <div className='body-section row'>
            <div className='filterBoard filter-boarder-form col-12 col-md-4 col-lg-3'>
-            <form id='filterSection' className='row'>     
+            <form id='filterSection' className='filterForm'>     
                 <h1><TbFilterCheck size={30}/>Filters</h1>
                     <div className='col-12 col-sm-6 col-md-12'>
                     <h1>Category</h1> 
