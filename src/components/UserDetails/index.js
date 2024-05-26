@@ -132,7 +132,7 @@ class UserDetails extends Component{
                 <div className='text-center'>
                 <img src={avatar} alt={firstName} className='image-profile'/>
                 </div>
-                <h3 className='text-primary'>{`${firstName} ${lastName}`}</h3>
+                <h3 style={{color:"#050838",fontFamily:"Bahnschrift Condensed"}}>{`${firstName} ${lastName}`}</h3>
                 <p><b>gender: </b>{gender}</p>
                 <p><b>Email: </b>{email}</p>
                 <p><b>Domain: </b>{domain}</p>
@@ -204,8 +204,7 @@ class UserDetails extends Component{
                         </div>
                        }}
                     </Popup>
-                    <button type='button' onClick={this.addData} className='functions'><AiOutlinePlus size={30}/></button>
-                    </div>
+</div>
                     <button type='button' onClick={deleteCard} className='functions'><AiFillDelete size={50} color='red'/></button>
                 </div>
             </li>

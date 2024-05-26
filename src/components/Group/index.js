@@ -73,9 +73,9 @@ class Group extends Component{
         return <div class='row p-5'>
              <li className='card col-12 col-md-6 col-lg-4 p-3'>
             <div className="text-center">
-            <img src={avatar} alt={firstName} className='image-profile'/>
+            <img src='https://res.cloudinary.com/dkredoejm/image/upload/v1709824996/k68huwdnvrbgfcvf0ykr.png' alt={firstName} className='w-100 h-50'/>
             </div>
-            <h3 className='text-primary'>{`${firstName} ${lastName}`}</h3>
+            <h3 className='text-primary '>{`${firstName} ${lastName}`}</h3>
             <p><b>gender: </b>{gender}</p>
             <p><b>Email: </b>{email}</p>
             <p><b>Domain: </b>{domain}</p>

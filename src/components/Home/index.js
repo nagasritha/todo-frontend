@@ -1,7 +1,8 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {CirclesWithBar} from 'react-loader-spinner'
-import {TbFilterCheck} from 'react-icons/tb'
+import { FaFilter } from "react-icons/fa6";
+import { FaPeoplePulling } from "react-icons/fa6";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import { MdGroups } from "react-icons/md";
 import Popup from 'reactjs-popup'
@@ -24,12 +25,16 @@ class Home extends Component{
     avatar:'',
     domainValue:'',
     availableValue:0,
+    activeFilter : false
     }
 
     componentDidMount(){
         this.getData()
     }
 
+    updateFilter=()=>{
+        this.setState(prevState=>({activeFilter:!prevState.activeFilter}));
+    }
     getData= async()=>{
         const {offset,searchText,domain,gender,available}=this.state
         let domainValues=null
@@ -287,13 +292,15 @@ updateAvailable=async (event)=>{
         lastName,
         email,
         avatar,
-        domainValue,error,genderValue
+        domainValue,error,genderValue,activeFilter
         }=this.state
         
+        const filter = activeFilter ? 'd-block':'d-none';
         return <div className='background fluid-container'>
             <nav className='navbar' style={{'position':'fixed'}}>  
-                <img src='https://res.cloudinary.com/dkredoejm/image/upload/v1716704994/Employee_logo_a6alnd.png' alt='logo' className='logo'/>
+                <img src='https://res.cloudinary.com/dkredoejm/image/upload/v1710229823/enquire-removebg-preview_rgwbjs.png' alt='logo' className='logo'/>
                 <div className='group'>
+                   <div className='d-block d-md-none m-2' onClick={this.updateFilter}><FaFilter size={30} color="#FB8C00"/></div>
                    <Link to='/group'><MdGroups size={45} color="#FB8C00"/></Link>
                    <Popup trigger={
                         <button type='button' className='functions'><MdOutlineGroupAdd size={40} color='#FB8C00'/></button>
@@ -374,9 +381,9 @@ updateAvailable=async (event)=>{
                 </div>
             </nav>
            <div className='body-section row'>
-           <div className='filterBoard filter-boarder-form col-12 col-md-4 col-lg-3'>
+           <div className={`filterBoard filter-boarder-form col-12 col-md-4 col-lg-3 ${filter} d-md-block`}>
             <form id='filterSection' className='filterForm'>     
-                <h1><TbFilterCheck size={30}/>Filters</h1>
+                <h1><FaFilter size={30}/>  Filters</h1>
                     <div className='col-12 col-sm-6 col-md-12'>
                     <h1>Category</h1> 
                     <div>
@@ -425,13 +432,18 @@ updateAvailable=async (event)=>{
                     <label htmlFor='yes' style={{fontSize:'20px'}}>Available</label>
                     </div>
                     </div>
-                
+                <div className='text-right d-block d-md-none'>
+                    <button className='btn btn-danger' onClick={this.updateFilter}>close</button>
+                </div>
             </form>
            </div>
            <div className='p-3 col-12 col-md-8 col-lg-9'>
+           <h1 style={{color:"#050838",fontFamily:"Algerian"}} className="text-center">Manage your Employee Data <FaPeoplePulling/></h1>
            <div className='d-flex flex-row justify-content-center'>
+           
            <div className='flex-justify-content-center bg-light search mt-3 rounded text-center w-75'>
-            <input type='search' onChange={this.updateSearch} value={searchText} placeholder='search specific user' className="search-input w-100"/>
+            
+            <input type='search' onChange={this.updateSearch} value={searchText} placeholder='search an Employee with user name' className="search-input w-100"/>
             <button onClick={this.getData} className='btn btn-primary' style={{padding:'5px'}}>Search</button>
           </div>
            </div>
