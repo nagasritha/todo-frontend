@@ -25,11 +25,16 @@ class Home extends Component{
     avatar:'',
     domainValue:'',
     availableValue:0,
-    activeFilter : false
+    activeFilter : false,
+    result : ''
     }
 
     componentDidMount(){
         this.getData()
+    }
+
+    updateResult = (message)=>{
+        this.setState({result:message});
     }
 
     updateFilter=()=>{
@@ -65,7 +70,8 @@ class Home extends Component{
         if(fetchData.ok){
             const data=await fetchData.json()
             let updatedData=null
-            if (data.length!==0){
+
+            if(data.length!==0){
                  updatedData=data.map(item=>({
                     id:item.id,
                     firstName:item.first_name,
@@ -117,7 +123,6 @@ class Home extends Component{
         const url=`https://todoupdatedcode.onrender.com/users/?limit=20&offset=${offset}`
         const response=await fetch(url);
         const data=await (response.json())
-        console.log(data.length)
         if(data.length===0){
           return false
         }
@@ -178,6 +183,7 @@ class Home extends Component{
   barColor=""
   ariaLabel='circles-with-bar-loading'
 />
+<p className='test-dark text-center'>Please wait, Data is loading...</p>
     </div>
 
     output=()=>{
@@ -201,7 +207,6 @@ class Home extends Component{
         const data=await fetch(url, {
             method: 'DELETE',
         })
-        console.log(data)
         this.getData()
        
     }
@@ -232,7 +237,6 @@ class Home extends Component{
    }
 
    updateAvailableValue=(event)=>{
-    console.log(event.target.checked)
     const bool= event.target.checked
     let value=null
     if (bool){
@@ -261,7 +265,6 @@ updateAvailable=async (event)=>{
     addUser=async (event)=>{
         event.preventDefault()
         const {firstName,lastName,email,genderValue,domainValue,availableValue,avatar}=this.state
-        console.log(firstName==="" || lastName==="" )
         if(firstName==="" || lastName==="" || genderValue==="" || email==="" || domainValue==="" || avatar==='' ) {
             this.setState({error:'*Required'})
         }else{
@@ -283,6 +286,11 @@ updateAvailable=async (event)=>{
                 body: JSON.stringify(userDetails),
               });
             console.log(response)
+            if(response.ok){
+                this.updateResult('data added Successfully');
+            }else{
+                this.updateResult('Invalid Form Fields');
+            }
             this.getData()
         }
     }
@@ -292,7 +300,7 @@ updateAvailable=async (event)=>{
         lastName,
         email,
         avatar,
-        domainValue,error,genderValue,activeFilter
+        domainValue,error,genderValue,activeFilter,result
         }=this.state
         
         const filter = activeFilter ? 'd-block':'d-none';
@@ -307,7 +315,7 @@ updateAvailable=async (event)=>{
                     } modal>
                        {close=>{
                         return <div className='container d-flex flex-row justify-content-center' >
-                            <form onSubmit={this.save} id='User' className='row add-user-form'>
+                            <form onSubmit={this.addUser} id='User' className='row add-user-form'>
                                 <h1>Add New User</h1>
                                 <div className='col-12 col-md-6'>
                                     <div className='d-flex flex-column'>
@@ -341,7 +349,7 @@ updateAvailable=async (event)=>{
                                     </div>
                                 </div>
                                 <div className='col-12 col-md-6'>
-                                    <div class='d-flex flex-column'>
+                                    <div className='d-flex flex-column'>
                                         <label htmlFor='gender'>Gender</label>
                                         <div>
                                             <input name='gender' id='male' type='radio' value='Male' onChange={this.updateGenderValue}/>
@@ -371,9 +379,10 @@ updateAvailable=async (event)=>{
                             <label htmlFor='available'>Availability</label>
                         </div>
                         <div style={{textAlign:'right'}}>
-                        <button type='submit'  className='btn btn-primary m-2' onClick={this.addUser}>Add</button>
+                        <button type='submit'  className='btn btn-primary m-2'>Add</button>
                         <button onClick={()=>close()} type='button' className='btn btn-danger'>Close</button>
                         </div>
+                        <p className={result === "data added Successfully" ? 'text-success':'text-danger'}><b>{result}</b></p>
                         </form>
                         </div>
                        }}
